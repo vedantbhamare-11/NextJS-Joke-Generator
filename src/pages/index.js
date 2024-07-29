@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Analytics } from "@vercel/analytics/react"
 import { useJokeStore } from '../stores/jokeStore';
 import '../app/globals.css'; 
 import { getRandomJoke } from '../services/jokeService';
@@ -19,11 +20,15 @@ const Home = () => {
   }, []);
 
   return (
+    <>
+    
     <Container>
       <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
         {joke ? <JokeCard joke={joke} onFetchJoke={fetchJoke} /> : <Loading />}
       </Box>
     </Container>
+    <Analytics />
+    </>
   );
 };
 
